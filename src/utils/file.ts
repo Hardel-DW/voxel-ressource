@@ -20,3 +20,14 @@ export async function getFilesFromDirectory(dirPath: string): Promise<string[]> 
 
     return imageFiles;
 }
+
+
+/**
+ * Get all subdirectories from a given directory.
+ * @param dirPath The directory path to search.
+ * @returns Array of subdirectory names.
+ */
+export function getSubdirectoriesFromDirectory(dirPath: string): string[] {
+    return fs.readdirSync(dirPath)
+        .filter(file => fs.statSync(path.join(dirPath, file)).isDirectory());
+}
