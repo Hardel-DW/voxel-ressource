@@ -1,10 +1,10 @@
-import fs from 'fs/promises';
-import { readdirSync } from 'fs';
-import path from 'path';
-import sharp from 'sharp';
-import GIFEncoder from 'gifencoder';
-import { createCanvas, loadImage } from 'canvas';
-import { createWriteStream } from 'fs-extra';
+import fs from "node:fs/promises";
+import { readdirSync } from "node:fs";
+import path from "node:path";
+import sharp from "sharp";
+import GIFEncoder from "gifencoder";
+import { createCanvas, loadImage } from "canvas";
+import { createWriteStream } from "fs-extra";
 
 /**
  * Récupère la liste des fichiers d'image dans un répertoire
@@ -12,17 +12,17 @@ import { createWriteStream } from 'fs-extra';
  * @returns Liste des chemins des fichiers d'image
  */
 export function getImageFilesFromDirectory(dirPath: string): string[] {
-    const supportedExtensions = ['.jpg', '.jpeg', '.png', '.webp', '.bmp', '.tiff'];
+    const supportedExtensions = [".jpg", ".jpeg", ".png", ".webp", ".bmp", ".tiff"];
 
     return readdirSync(dirPath)
-        .filter(file => supportedExtensions.includes(path.extname(file).toLowerCase()))
+        .filter((file) => supportedExtensions.includes(path.extname(file).toLowerCase()))
         .sort((a, b) => {
             // Extract the numbers from the file names and sort them numerically
-            const numA = parseInt(a.match(/\d+/)?.[0] || '0', 10);
-            const numB = parseInt(b.match(/\d+/)?.[0] || '0', 10);
+            const numA = Number.parseInt(a.match(/\d+/)?.[0] || "0", 10);
+            const numB = Number.parseInt(b.match(/\d+/)?.[0] || "0", 10);
             return numA - numB;
         })
-        .map(file => path.join(dirPath, file));
+        .map((file) => path.join(dirPath, file));
 }
 
 /**
@@ -41,18 +41,25 @@ export async function createAnimationFromImages(dirPath: string, outputPath: str
     const firstImageBuffer = await fs.readFile(firstImage);
     const firstImageMetadata = await sharp(firstImageBuffer).metadata();
 
-    const canvas = createCanvas(firstImageMetadata.width!, firstImageMetadata.height!);
-    const ctx = canvas.getContext('2d');
+    if (!firstImageMetadata.width || !firstImageMetadata.height) {
+        throw new Error("Invalid image dimensions");
+    }
 
-    const encoder = new GIFEncoder(firstImageMetadata.width!, firstImageMetadata.height!);
+    const canvas = createCanvas(firstImageMetadata.width, firstImageMetadata.height);
+    const ctx = canvas.getContext("2d");
+    if (!ctx) {
+        throw new Error("Failed to get canvas context");
+    }
+
+    const encoder = new GIFEncoder(firstImageMetadata.width, firstImageMetadata.height);
     encoder.createReadStream().pipe(createWriteStream(outputPath));
 
     encoder.start();
     encoder.setRepeat(0);
     encoder.setDelay(150);
     encoder.setTransparent(0x00000000);
-    ctx.fillStyle = 'rgba(0, 0, 0, 0)';
-    ctx.fillRect(0, 0, firstImageMetadata.width!, firstImageMetadata.height!);
+    ctx.fillStyle = "rgba(0, 0, 0, 0)";
+    ctx.fillRect(0, 0, firstImageMetadata.width, firstImageMetadata.height);
 
     for (const file of files) {
         const image = await loadImage(file);
@@ -62,8 +69,7 @@ export async function createAnimationFromImages(dirPath: string, outputPath: str
             continue;
         }
 
-
-        ctx.clearRect(0, 0, firstImageMetadata.width!, firstImageMetadata.height!);
+        ctx.clearRect(0, 0, firstImageMetadata.width, firstImageMetadata.height);
         ctx.drawImage(image, 0, 0);
         encoder.addFrame(ctx as any);
     }
