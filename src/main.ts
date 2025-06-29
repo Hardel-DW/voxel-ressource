@@ -1,7 +1,7 @@
 import { createAnimationFromImages } from "./animation";
 import { generateAtlas } from "./atlas";
 import { getSubdirectoriesFromDirectory } from "./utils/file";
-import { ASSETS_PATH, ENABLE_ATLAS, ENABLE_ANIMATION, OUTPUT_PATH } from "./utils/conifg";
+import { ASSETS_PATH, ENABLE_ATLAS, ENABLE_ANIMATION, OUTPUT_PATH } from "./utils/config";
 
 /**
  * Generate atlas for enabled types

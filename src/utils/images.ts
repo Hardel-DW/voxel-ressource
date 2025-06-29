@@ -9,7 +9,7 @@ import {
 	EFFORT,
 	DITHER,
 	QUALITY,
-} from "./conifg";
+} from "./config";
 
 /**
  * Get the width and height of an image

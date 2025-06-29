@@ -3,7 +3,6 @@ import { readdirSync } from "node:fs";
 import path from "node:path";
 import sharp from "sharp";
 import GIFEncoder from "gifencoder";
-import { createCanvas, loadImage } from "canvas";
 import { createWriteStream } from "fs-extra";
 
 /**
@@ -32,7 +31,10 @@ La taille c'est la premiére image trouver.
 Le format de sortie c'est gif.
     */
 export async function createAnimationFromImages(dirPath: string, outputPath: string): Promise<void> {
-    const files = await getImageFilesFromDirectory(dirPath);
+    // Lazy load canvas only when needed
+    const { createCanvas, loadImage } = await import("canvas");
+
+    const files = getImageFilesFromDirectory(dirPath);
     if (files.length === 0) {
         throw new Error("No images found in the specified directory.");
     }

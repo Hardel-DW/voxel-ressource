@@ -16,7 +16,7 @@ import {
 	EFFORT,
 	DITHER,
 	QUALITY,
-} from "./utils/conifg";
+} from "./utils/config";
 
 export type ImageMetadata = { width: number; height: number; file: string };
 export type ImagePosition = [number, number, number, number];

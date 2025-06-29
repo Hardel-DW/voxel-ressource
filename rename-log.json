@@ -1,0 +1,98 @@
+[
+  {
+    "original": "Black_Stained_Glass_JE3_BE3.webp",
+    "converted": "black__stained__glass",
+    "matched": "glass",
+    "status": "success"
+  },
+  {
+    "original": "Blue_Stained_Glass_JE3_BE3.webp",
+    "converted": "blue__stained__glass",
+    "matched": "glass",
+    "status": "skipped"
+  },
+  {
+    "original": "Brown_Stained_Glass_JE3_BE3.webp",
+    "converted": "brown__stained__glass",
+    "matched": "glass",
+    "status": "skipped"
+  },
+  {
+    "original": "Cyan_Stained_Glass_JE3_BE3.webp",
+    "converted": "cyan__stained__glass",
+    "matched": "glass",
+    "status": "skipped"
+  },
+  {
+    "original": "Gray_Stained_Glass_JE3_BE3.webp",
+    "converted": "gray__stained__glass",
+    "matched": "glass",
+    "status": "skipped"
+  },
+  {
+    "original": "Green_Stained_Glass_JE3_BE3.webp",
+    "converted": "green__stained__glass",
+    "matched": "glass",
+    "status": "skipped"
+  },
+  {
+    "original": "Light_Blue_Stained_Glass_JE3_BE3.webp",
+    "converted": "light__blue__stained__glass",
+    "matched": "glass",
+    "status": "skipped"
+  },
+  {
+    "original": "Light_Gray_Stained_Glass_JE3_BE3.webp",
+    "converted": "light__gray__stained__glass",
+    "matched": "glass",
+    "status": "skipped"
+  },
+  {
+    "original": "Lime_Stained_Glass_JE3_BE3.webp",
+    "converted": "lime__stained__glass",
+    "matched": "glass",
+    "status": "skipped"
+  },
+  {
+    "original": "Magenta_Stained_Glass_JE3_BE3.webp",
+    "converted": "magenta__stained__glass",
+    "matched": "glass",
+    "status": "skipped"
+  },
+  {
+    "original": "Orange_Stained_Glass_JE3_BE3.webp",
+    "converted": "orange__stained__glass",
+    "matched": "glass",
+    "status": "skipped"
+  },
+  {
+    "original": "Pink_Stained_Glass_JE3_BE3.webp",
+    "converted": "pink__stained__glass",
+    "matched": "glass",
+    "status": "skipped"
+  },
+  {
+    "original": "Purple_Stained_Glass_JE3_BE3.webp",
+    "converted": "purple__stained__glass",
+    "matched": "glass",
+    "status": "skipped"
+  },
+  {
+    "original": "Red_Stained_Glass_JE3_BE3.webp",
+    "converted": "red__stained__glass",
+    "matched": "glass",
+    "status": "skipped"
+  },
+  {
+    "original": "White_Stained_Glass_JE3_BE3.webp",
+    "converted": "white__stained__glass",
+    "matched": "glass",
+    "status": "skipped"
+  },
+  {
+    "original": "Yellow_Stained_Glass_JE3_BE3.webp",
+    "converted": "yellow__stained__glass",
+    "matched": "glass",
+    "status": "skipped"
+  }
+]
