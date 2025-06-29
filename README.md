@@ -123,3 +123,13 @@ output/
     ├── smoke.gif
     └── ...
 ```
+
+# Usefull thing to know :
+
+- Install TS-Node : `npm install -g ts-node` to start the project.
+- For Check the missing items, run the `check-missing-items.ps1` script.
+- For Remove the extra files, run the `check-missing-items.ps1` script with the
+  `-Clean` parameter.
+- For Generate Waxed variants, run the `generate-waxed-variants.ps1` script.
+- You can go in config.ts to change the configuration, like which atlas you want
+  to generate.
