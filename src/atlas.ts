@@ -49,6 +49,10 @@ export async function generateAtlas(
 			.toFile(outputImagePath);
 		const positionsObject = createPositionsObject(processedMetadata, positions);
 		await fs.writeJson(outputJsonPath, positionsObject, { spaces: 2 });
+
+		const minifiedJsonPath = outputJsonPath.replace(/\.json$/, ".min.json");
+		await fs.writeJson(minifiedJsonPath, positionsObject);
+
 		console.log("9. Atlas créé avec succès, pour:", dirPath);
 	} catch (error) {
 		console.error("Error generating atlas:", error);

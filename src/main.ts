@@ -10,7 +10,7 @@ for (const atlasType of ENABLE_ATLAS) {
 	generateAtlas(
 		`${ASSETS_PATH}/${atlasType}`,
 		`${OUTPUT_PATH}/${atlasType}/atlas.webp`,
-		`${OUTPUT_PATH}/${atlasType}/atlas.json`
+		`${OUTPUT_PATH}/${atlasType}/data.json`,
 	);
 }
 
