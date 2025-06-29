@@ -1,18 +1,27 @@
 import { createAnimationFromImages } from "./animation";
 import { generateAtlas } from "./atlas";
 import { getSubdirectoriesFromDirectory } from "./utils/file";
+import { ASSETS_PATH, ENABLE_ATLAS, ENABLE_ANIMATION, OUTPUT_PATH } from "./utils/conifg";
 
-generateAtlas(
-	"./items",
-	"./output/items/atlas.webp",
-	"./output/items/atlas.json",
-);
-//generateAtlas("./entity", "./output/entity/atlas.webp", "./output/entity/atlas.json");
-//generateAtlas("./mob_effect", "./output/mob_effect/atlas.webp", "./output/mob_effect/atlas.json");
-
-for (const particle of getSubdirectoriesFromDirectory("./particle")) {
-	createAnimationFromImages(
-		`./particle/${particle}`,
-		`./output/particle/${particle}.gif`,
+/**
+ * Generate atlas for enabled types
+ */
+for (const atlasType of ENABLE_ATLAS) {
+	generateAtlas(
+		`${ASSETS_PATH}/${atlasType}`,
+		`${OUTPUT_PATH}/${atlasType}/atlas.webp`,
+		`${OUTPUT_PATH}/${atlasType}/atlas.json`
 	);
+}
+
+/**
+ * Generate animations for enabled types
+ */
+for (const animationType of ENABLE_ANIMATION) {
+	for (const subdirectory of getSubdirectoriesFromDirectory(`${ASSETS_PATH}/${animationType}`)) {
+		createAnimationFromImages(
+			`${ASSETS_PATH}/${animationType}/${subdirectory}`,
+			`${OUTPUT_PATH}/${animationType}/${subdirectory}.gif`,
+		);
+	}
 }
